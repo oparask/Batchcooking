@@ -1,3 +1,31 @@
-.recette1 {
-    border: 2px;
+#recette1, #recette2, #recette3 {
+    border: 1px solid gray;
+    display: inline-block;
+    border-radius: 1em;
+    box-shadow: 4px 4px rgba(182, 180, 179, 0.304);
+    margin: 5em;
+    width: 13em;
+    height: 20em;
+    
+    position: relative;
+
+}
+.photo{
+    position : absolute;
+    height: 40%;
+    border-radius: 1em;
+
+}
+.titre{
+    position:absolute;
+    
+  bottom: 59%;
+    left: 1em
+
+
+}
+
+.tags{
+    bottom: 3px;
+
 }
