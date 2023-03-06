@@ -49,16 +49,6 @@ footer{
 
 
 
-
-
-
-    
-background-color: rgba(190, 162, 36, 0.219);
-background-image: url(/juin-g60085/batchcooking/style/img/fond_shopping_list.jpg);
-background-size: cover;
-
-
-
 body{
     margin: 0;
     padding: 0;

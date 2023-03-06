@@ -17,11 +17,11 @@ body {
     flex-wrap: wrap;
     flex-direction: column;
 
-
 }
 
 button {
-    display: flex;
+    
+    align-self: start;
 }
 
 #catégories {
