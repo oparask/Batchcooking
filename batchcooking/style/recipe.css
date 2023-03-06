@@ -1,60 +1,62 @@
-body{
+body {
     padding: 0px;
     margin: 0px;
     height: 100%;
     width: 100%;
-   
+
 }
-#recipe-container{
+
+#recipe-container {
     display: grid;
     grid-template-columns: 0.5fr 1fr 3fr;
     grid-template-rows: auto 1fr 1fr;
-    grid-template-areas: "retour header header"
-                       "retour image ingrédients"
-                         "retour étapes étapes";
+    grid-template-areas: "retour titre ."
+        "retour image ingrédients"
+        "retour étapes étapes";
     grid-gap: 4px;
     height: 100%;
     width: 100%;
-   
+
 }
-header{
-    grid-area: header;
+
+h1 {
+    grid-area: titre;
     font-family: 'Amatic SC', cursive;
 
 }
 
-button{
+button {
     grid-area: retour;
 
 }
-#image{
 
-    width: 20%;
-    height: auto;
+#image {
     grid-area: image;
+    align-self: center;
     box-shadow: 1px 1px 6px 3px rgba(128, 128, 128, 0.749);
     border-radius: 10px;
     width: 100%;
-    height: 90%;
-    object-fit:cover;
-    align-self: center;
+    height: 80%;
+    object-fit: cover;
+    opacity: 90%;
+  
 }
-#ingrédients{
+
+#ingrédients {
     font-family: 'Satisfy', cursive;
     grid-area: ingrédients;
     align-self: center;
 }
 
-#ingrédients ul{
+#ingrédients ul {
     list-style-type: circle;
-    font-size: 1em;
     align-self: center;
 }
-#étapes{
-    
+
+#étapes {
     font-family: 'Satisfy', cursive;
     grid-area: étapes;
     font-size: 1.5em;
-    
-  
+
+
 }
