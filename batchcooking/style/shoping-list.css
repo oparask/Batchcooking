@@ -1,0 +1,59 @@
+body {
+    padding: 0%;
+    margin: 0%;
+    height: 100%;
+    width: 100%;
+  
+}
+
+#shopping-list-container {
+    background-image: url(/juin-g60085/batchcooking/style/img/fond_shopping_list.jpg);
+    background-size: cover;
+    padding: 0%;
+    margin: 0%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+
+}
+
+button {
+    display: flex;
+}
+
+#catégories {
+
+    background-color: rgba(45, 41, 34, 0.689);
+    box-shadow: 1px 1px 7px 4px rgba(45, 41, 34, 0.689);
+    border-radius: 10px;
+    color: aliceblue;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-self: center;
+    column-gap: 4em;
+    
+    width: 60%;
+    height: 40%;
+    font-family: 'Satisfy', cursive;
+    
+}
+
+h1 {
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+    opacity: 70%;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+
+
+}
+h2{
+    font-family: 'Amatic SC', cursive;
+    
+}
