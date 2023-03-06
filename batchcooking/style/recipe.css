@@ -7,7 +7,7 @@ body{
 }
 #recipe-container{
     display: grid;
-    grid-template-columns: auto 3fr auto;
+    grid-template-columns: 0.5fr 1fr 3fr;
     grid-template-rows: auto 1fr 1fr;
     grid-template-areas: "retour header header"
                        "retour image ingrédients"
@@ -34,19 +34,27 @@ button{
     grid-area: image;
     box-shadow: 1px 1px 6px 3px rgba(128, 128, 128, 0.749);
     border-radius: 10px;
+    width: 100%;
+    height: 90%;
+    object-fit:cover;
+    align-self: center;
 }
 #ingrédients{
     font-family: 'Satisfy', cursive;
     grid-area: ingrédients;
+    align-self: center;
 }
 
 #ingrédients ul{
     list-style-type: circle;
-    
+    font-size: 1em;
+    align-self: center;
 }
 #étapes{
     
     font-family: 'Satisfy', cursive;
     grid-area: étapes;
+    font-size: 1.5em;
+    
   
 }
