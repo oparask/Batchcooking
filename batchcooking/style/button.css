@@ -6,6 +6,7 @@ button {
     margin: 0.5em;
     border: none;
     outline: none;
+    position: fixed;
 }
 
 button:hover {
