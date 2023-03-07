@@ -69,14 +69,14 @@
     background-color: rgba(169, 190, 9, 0.854);
 }
 
-.button {
+.icône {
     position: absolute;
     top: 3px;
     right: 5px;
 
 }
 
-button {
+button{
     padding: 2px;
     color: rgb(114, 235, 62);
     background-color: rgba(255, 210, 127, 0);
