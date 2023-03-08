@@ -1,9 +1,10 @@
-body {
-    padding: 0px;
-    margin: 0px;
+html{
     height: 100%;
-    width: 100%;
-
+}
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
 }
 
 #recipe-container {
@@ -15,8 +16,7 @@ body {
         "retour étapes étapes";
     grid-gap: 4px;
     height: 100%;
-    width: 100%;
-
+    background-color: rgba(250, 235, 215, 0.443);
 }
 
 h1 {
@@ -24,14 +24,11 @@ h1 {
     font-family: 'Amatic SC', cursive;
     color: rgb(238, 104, 27);
     text-shadow: 0px 1px rgb(21, 7, 2);
-    
-
 }
 
 button {
     grid-area: retour;
     position: fixed;
-
 }
 
 #image {
@@ -43,7 +40,6 @@ button {
     height: 80%;
     object-fit: cover;
     opacity: 90%;
-  
 }
 
 #ingrédients {
@@ -60,9 +56,9 @@ button {
 #étapes {
     font-family: 'Satisfy', cursive;
     grid-area: étapes;
-    font-size: 1.5em;
-    
+    font-size: 1.5em;    
 }
+
 li{
     margin-top: 15px;
 }
