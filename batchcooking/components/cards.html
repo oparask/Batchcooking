@@ -7,7 +7,7 @@
     <meta name="author" content="g60085">
     <meta name="keywords" content="recettes, repas">
     <meta name="description" content="cuisine à domicile">
-    <link rel="stylesheet" href="/juin-g60085/batchcooking/style/cards.css">
+    <link rel="stylesheet" href="../style/cards.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Satisfy">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
@@ -16,12 +16,13 @@
 </head>
 
 <body>
-    <main>
+    <div id="cards">
+        <div class="icône">
+            <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
+            <button class="calendrier"><i class="fa-solid fa-calendar-day"></i></button>
         <div id="recette1">
-            <img src="/juin-g60085/batchcooking/img/cards/chili.jpg" alt="chili" title="chili" class="photo">
-            <div class="icône">
-                    <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
-                    <button class="calendrier"><i class="fa-solid fa-calendar-day"></i></button>
+            <img src="../img/cards/chili.jpg" alt="chili" title="chili" class="photo">
+        
             </div>
             <h3 class="titre">Chili</h3>
             <p class="tags">
@@ -31,10 +32,10 @@
         </div>
 
         <div id="recette2">
-            <img src="/juin-g60085/batchcooking/img/cards/riz.jpg" alt="riz" title="riz" class="photo">
+            <img src="../img/cards/riz.jpg" alt="riz" title="riz" class="photo">
             <div class="icône">
-                    <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
-                    <button class="calendrier"><i class="fa-solid fa-calendar-day"></i></button>
+                <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
+                <button class="calendrier"><i class="fa-solid fa-calendar-day"></i></button>
             </div>
             <h3 class="titre">Riz</h3>
             <p class="tags">
@@ -43,7 +44,7 @@
         </div>
 
         <div id="recette3">
-            <img src="/juin-g60085/batchcooking/img/cards/lasagne.jpg" alt="lasagne" title="lasagne" class="photo">
+            <img src="../img/cards/lasagne.jpg" alt="lasagne" title="lasagne" class="photo">
             <div class="icône">
                 <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
                 <button class="calendrier"><i class="fa-solid fa-calendar-day"></i></button>
@@ -55,7 +56,8 @@
                 <span class=féculents>Féculents</span>
             </p>
         </div>
-    </main>
+    </div>
+
 </body>
 
 </html>
