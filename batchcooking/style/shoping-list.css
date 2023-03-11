@@ -5,19 +5,8 @@ html {
 body {
     background-image: url(../style/img/fond_shopping_list.png);
     background-size: cover;
-    padding-top: 50px;
+    padding-top: 25px;
     margin: 0;
-    width: 100%;
-
-    
-
-}
-
-#shopping-list-container {
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    width: 100%;
 }
 
 #catégories {
@@ -25,16 +14,12 @@ body {
     box-shadow: 1px 1px 7px 4px rgba(45, 41, 34, 0.689);
     color: aliceblue;
     font-family: 'Satisfy', cursive;   
-
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    align-self: center;
     column-gap: 4em;
     border-radius: 10px;
     margin: 0 100px;
-     
- 
 }
 
 h1 {
@@ -43,7 +28,7 @@ h1 {
     opacity: 70%;
     font-size: 4em;
     margin: 0;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     text-align: center;
     color: rgba(240, 248, 255, 0.829);
 }
