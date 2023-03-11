@@ -1,38 +1,39 @@
-body{
-    background-image: url(/juin-g60085/batchcooking/style/img/fond_calendrier.jpg);
-    background-size: cover;
+html {
+    height: 100%;
 }
-.calendar{
+
+body {
+    background-image: url(../style/img/fond_calendrier.jpg);
+    background-size: cover;
+    margin: 0;
+}
+.calendar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     font-family: 'Great Vibes', cursive;
-
+    column-gap: 50px;
+    margin: 20px;
 }
 
-div .jour{
-    padding: 10px;
-}
-.jour:hover,
-.jour:focus-visible{
+.jour:hover {
     background-color: rgba(253, 253, 253, 0.089);
     box-shadow: 2px 2px 5px 5px rgba(253, 253, 253, 0.089);
 }
 
-
-h1{
+h1 {
     color: rgba(184, 147, 34, 0.806);
-    
+    font-size: 2em;
 }
-p{
 
-    padding-right: 5px;
+p {
     margin: 20px;
+    padding-left:10px ;
     color: rgba(184, 147, 34, 0.806);
-    font-size: 1em;
+    font-size: 2em;
 }
-p:hover{
+
+p:hover {
     background-color: rgba(253, 253, 253, 0.18);
     box-shadow: 2px 2px 5px 5px rgba(253, 253, 253, 0.18);
-
 }
