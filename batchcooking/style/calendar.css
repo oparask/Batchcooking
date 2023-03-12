@@ -1,23 +1,29 @@
 html {
     height: 100%;
-}
-
-body {
-    background-image: url(../style/img/fond_calendrier.jpg);
-    background-size: cover;
     margin: 0;
 }
 
+body { 
+    margin: 0;
+    height: 100%;
+}
+
 #calendar {
+    background-image: url(../style/img/fond_calendrier.jpg);
+    background-size: cover;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    column-gap: 45px;
+    column-gap: 1em;
     font-family: 'Amatic SC', cursive;
+    height: 100%;
+    margin: 0;
+    box-shadow: 1px 1px 5px 5px rgb(110, 107, 104);
+    border-radius: 10px;
 }
 
 .jour {
-    padding: 0 10px;
+    padding: 0 1em;
 }
 
 .jour:hover {
@@ -25,19 +31,21 @@ body {
     box-shadow: 2px 2px 5px 5px rgba(253, 253, 253, 0.089);
 }
 
-h1 {
+#calendar h1 {
     color: rgba(250, 235, 215, 0.735);
     text-shadow: 1px 0 rgba(74, 185, 34, 0.441);
-    font-size: 3em;
+    margin-bottom: 0.2em;
+   
 }
 
-p {
+#calendar p {
     color: rgba(225, 158, 69, 0.747);
-    font-size: 1.5em;
     font-weight: bolder;
+    padding: 0;
+    margin: 0.2em;
 }
 
-p:hover {
+ #calendar p:hover {
     background-color: rgba(253, 253, 253, 0.18);
     box-shadow: 2px 2px 5px 5px rgba(253, 253, 253, 0.18);
     cursor: pointer;

@@ -2,6 +2,10 @@
     display:flex;
     flex-wrap: wrap;
     justify-content:flex-start; 
+    background-color: rgb(235, 231, 226);
+    
+    box-shadow: 1px 1px 5px 5px rgba(97, 94, 93, 0.792);
+    border-radius: 10px;
 }
 
 #recetteChili,
@@ -15,7 +19,7 @@
     margin: 10px;
     border: 2px solid rgba(222, 201, 163, 0.228);
     border-radius: 10px;   
-    background-color: rgba(255, 183, 75, 0.112);
+    background-color: rgb(230, 218, 202);
     position: relative;
 }
 
