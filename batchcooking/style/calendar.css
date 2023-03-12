@@ -7,13 +7,17 @@ body {
     background-size: cover;
     margin: 0;
 }
-.calendar {
+
+#calendar {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    font-family: 'Great Vibes', cursive;
-    column-gap: 50px;
-    margin: 20px;
+column-gap: 45px;
+    font-family: 'Amatic SC', cursive;
+}
+
+.jour {
+    padding: 0 10px;
 }
 
 .jour:hover {
@@ -22,15 +26,15 @@ body {
 }
 
 h1 {
-    color: rgba(184, 147, 34, 0.806);
-    font-size: 2em;
+    color: rgba(250, 235, 215, 0.735);
+    text-shadow: 1px 0 rgba(74, 185, 34, 0.441);
+    font-size: 3em;
 }
 
 p {
-    margin: 20px;
-    padding-left:10px ;
-    color: rgba(184, 147, 34, 0.806);
-    font-size: 2em;
+    color: rgba(225, 158, 69, 0.747);
+    font-size: 1.5em;
+    font-weight: bolder;
 }
 
 p:hover {
