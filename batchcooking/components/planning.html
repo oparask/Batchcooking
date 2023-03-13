@@ -7,15 +7,13 @@
     <meta name="author" content="g60085">
     <meta name="keywords" content="cuisine à domicile">
     <meta name="description" content="planning, batchcooking">
+    <!--style sheets-->
     <link rel="stylesheet" href="../style/planning.css">
     <link rel="stylesheet" href="../style/common.css">
-
-<!--calendar--> 
     <link rel="stylesheet" href="../style/calendar.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Satisfy&family=Great+Vibes">
-    <!--cards--> 
     <link rel="stylesheet" href="../style/cards.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Satisfy">
+    <!--fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Satisfy&family=Great+Vibes">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -24,6 +22,7 @@
 <body>
     <div id="planning-container">
         <h1 id="planningTitle">batchCooking.esi</h1>
+              <!--calendar-->
         <div id="calendar">
             <div class="jour">
                 <h1>Lundi</h1>
@@ -53,10 +52,9 @@
                 <p>jgvg</p>
             </div>
         </div>
-
-
+        <!--cards-->
         <div id="cards">
-            <div id="recetteChili">
+            <div id="recetteChili" class="scheduled">
                 <img src="../img/cards/chili.jpg" alt="chili" title="chili" class="photo">
                 <div class="icônes">
                     <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
@@ -68,7 +66,7 @@
                     <span class=légumes>Légumes</span>
                 </p>
             </div>
-            <div id="recetteRiz">
+            <div id="recetteRiz" class="selected">
                 <img src="../img/cards/riz.jpg" alt="riz" title="riz" class="photo">
                 <div class="icônes">
                     <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
@@ -93,10 +91,10 @@
                 </p>
             </div>
         </div>
-
         <div id="shoppingList">
-            <button><p>Liste de courses</p>
-                </button>
+            <button>
+                <p>Liste de courses</p>
+            </button>
         </div>
     </div>
 </body>

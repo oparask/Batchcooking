@@ -1,22 +1,11 @@
-html {
-    height: 100%;
-    margin: 0;
-}
-
-body { 
-    margin: 0;
-    height: 100%;
-}
-
 #calendar {
     background-image: url(../style/img/fond_calendrier.jpg);
     background-size: cover;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    column-gap: 1em;
+    column-gap: 2em;
     font-family: 'Amatic SC', cursive;
-    height: 100%;
     margin: 0;
     box-shadow: 1px 1px 5px 5px rgb(110, 107, 104);
     border-radius: 10px;
@@ -35,14 +24,14 @@ body {
     color: rgba(250, 235, 215, 0.735);
     text-shadow: 1px 0 rgba(74, 185, 34, 0.441);
     margin-bottom: 0.2em;
+    font-size: 2.5em;
    
 }
 
 #calendar p {
     color: rgba(225, 158, 69, 0.747);
     font-weight: bolder;
-    padding: 0;
-    margin: 0.2em;
+    font-size: 1.5em;
 }
 
  #calendar p:hover {

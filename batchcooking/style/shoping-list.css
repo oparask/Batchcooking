@@ -1,12 +1,7 @@
-html {
-    height: 100%;
-}
-
 body {
     background-image: url(../style/img/fond_shopping_list.png);
     background-size: cover;
     padding-top: 25px;
-    margin: 0;
 }
 
 #catégories {
@@ -18,8 +13,8 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     column-gap: 4em;
-    border-radius: 10px;
     margin: 0 100px;
+    border-radius: 10px;
 }
 
 h1 {
