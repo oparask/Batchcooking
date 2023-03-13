@@ -1,10 +1,7 @@
-#cards{
-    display:flex;
+#cards {
+    display: flex;
     flex-wrap: wrap;
-    justify-content:flex-start; 
-    background-color: rgb(235, 231, 226);
-    box-shadow: 1px 1px 5px 5px rgba(97, 94, 93, 0.792);
-    border-radius: 10px;
+    justify-content: space-evenly;
 }
 
 #recetteChili,
@@ -12,17 +9,19 @@
 #recetteLasagne {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 11em;
     height: 18em;
-    margin: 10px;
+    margin: 1em 0;
     border: 2px solid rgba(222, 201, 163, 0.228);
-    border-radius: 10px;   
+    border-radius: 10px;
     background-color: rgb(230, 218, 202);
     position: relative;
 }
 
-#recetteChili:hover,#recetteRiz:hover,#recetteLasagne:hover{
+#recetteChili:hover,
+#recetteRiz:hover,
+#recetteLasagne:hover {
     box-shadow: 2px 2px 5px 5px rgba(237, 130, 42, 0.242);
 }
 
@@ -66,13 +65,13 @@
     background-color: rgba(169, 190, 9, 0.854);
 }
 
-.icônes{
+.icônes {
     position: absolute;
     top: 10px;
     right: 10px;
 }
 
-.icônes button{
+.icônes button {
     padding: 2px;
     color: rgb(114, 235, 62);
     background-color: rgba(255, 210, 127, 0);
@@ -83,14 +82,14 @@
     cursor: pointer;
 }
 
-button:hover{
-    color:rgb(28, 21, 12);
+button:hover {
+    color: rgb(28, 21, 12);
 }
 
-.selected{
+.selected {
     box-shadow: 2px 2px 5px 5px rgba(237, 234, 42, 0.242);
 }
 
-.scheduled{
+.scheduled {
     box-shadow: 2px 2px 5px 5px rgba(113, 172, 226, 0.242);
 }

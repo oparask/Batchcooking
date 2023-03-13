@@ -7,8 +7,6 @@
     column-gap: 2em;
     font-family: 'Amatic SC', cursive;
     margin: 0;
-    box-shadow: 1px 1px 5px 5px rgb(110, 107, 104);
-    border-radius: 10px;
 }
 
 .jour {
@@ -24,17 +22,17 @@
     color: rgba(250, 235, 215, 0.735);
     text-shadow: 1px 0 rgba(74, 185, 34, 0.441);
     margin-bottom: 0.2em;
-    font-size: 2.5em;
-   
+    font-size: 2.5vw;
 }
 
 #calendar p {
     color: rgba(225, 158, 69, 0.747);
     font-weight: bolder;
-    font-size: 1.5em;
+    font-size: 1.5vw;
+    margin: 1.3vh;
 }
 
- #calendar p:hover {
+#calendar p:hover {
     background-color: rgba(253, 253, 253, 0.18);
     box-shadow: 2px 2px 5px 5px rgba(253, 253, 253, 0.18);
     cursor: pointer;

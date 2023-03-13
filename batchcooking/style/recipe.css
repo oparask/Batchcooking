@@ -1,4 +1,6 @@
-html, body, #recipe-container  {
+html,
+body,
+#recipe-container {
     height: 100%;
 }
 

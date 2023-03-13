@@ -8,7 +8,7 @@ body {
     background-color: rgba(45, 41, 34, 0.689);
     box-shadow: 1px 1px 7px 4px rgba(45, 41, 34, 0.689);
     color: aliceblue;
-    font-family: 'Satisfy', cursive;   
+    font-family: 'Satisfy', cursive;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -29,6 +29,5 @@ h1 {
 }
 
 h2 {
-    font-family: 'Amatic SC', cursive;   
+    font-family: 'Amatic SC', cursive;
 }
-
