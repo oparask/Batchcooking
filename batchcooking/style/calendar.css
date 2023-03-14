@@ -1,6 +1,11 @@
-#calendar {
+body,
+html {
+    height: 100%;
     background-image: url(../style/img/fond_calendrier.jpg);
     background-size: cover;
+}
+
+#calendar {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -22,14 +27,14 @@
     color: rgba(250, 235, 215, 0.735);
     text-shadow: 1px 0 rgba(74, 185, 34, 0.441);
     margin-bottom: 0.2em;
-    font-size: 2.5vw;
+    font-size: 2.5em;
 }
 
 #calendar p {
     color: rgba(225, 158, 69, 0.747);
     font-weight: bolder;
-    font-size: 1.5vw;
-    margin: 1.3vh;
+    font-size: 1.5em;
+    margin: 1.3em;
 }
 
 #calendar p:hover {
