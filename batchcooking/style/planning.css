@@ -31,7 +31,7 @@ body {
     background-color: rgb(235, 231, 226);
     box-shadow: 1px 1px 5px 5px rgba(97, 94, 93, 0.792);
     border-radius: 10px;
-    height: 84.5vh;
+    height: 90vh;
     overflow-y: scroll;
 }
 
@@ -58,7 +58,7 @@ body {
 
 #calendar {
     grid-area: calendar;
-    height: 67vh;
+    height: 71vh;
     box-shadow: 1px 1px 5px 5px rgb(110, 107, 104);
     border-radius: 10px;
 }
@@ -71,7 +71,7 @@ body {
     box-shadow: 1px 1px 5px 5px rgb(97, 94, 93);
     border: none;
     padding: 0;
-    height: 16vh;
+    height: 18vh;
     width: 100%
 }
 
