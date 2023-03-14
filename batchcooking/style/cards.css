@@ -1,8 +1,7 @@
 #cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    grid-area: cards;
+    justify-content: space-evenly;
 }
 
 #recetteChili,
