@@ -1,27 +1,24 @@
 #cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-evenly; 
+    gap: 5em;
 }
 
-#recetteChili,
-#recetteRiz,
-#recetteLasagne {
+.card {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 11em;
-    height: 18em;
+    width: 13em;
+    height: 21em;
     margin: 1em;
     border: 2px solid rgba(222, 201, 163, 0.228);
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: rgb(230, 218, 202);
     position: relative;
 }
 
-#recetteChili:hover,
-#recetteRiz:hover,
-#recetteLasagne:hover {
+.card:hover{
     box-shadow: 2px 2px 5px 5px rgba(237, 130, 42, 0.242);
 }
 
@@ -29,7 +26,7 @@
     object-fit: cover;
     height: 40%;
     width: 100%;
-    border-radius: 8px 8px 0 0;
+    border-radius: 19px 19px 0 0;
 }
 
 .titre {
@@ -38,6 +35,7 @@
     text-shadow: 0px 1px rgb(21, 7, 2);
     height: 50%;
     margin-left: 9px;
+    font-size: 1.5em;
 }
 
 .tags {
@@ -51,6 +49,7 @@
     padding: 5px 2px;
     font-family: 'Amatic SC', cursive;
     font-weight: bold;
+    font-size: 1.3em;
 }
 
 .protéines {
@@ -76,7 +75,7 @@
     color: rgb(114, 235, 62);
     background-color: rgba(255, 210, 127, 0);
     opacity: 0.80;
-    font-size: 1em;
+    font-size: 1.3em;
     border: none;
     outline: none;
     cursor: pointer;

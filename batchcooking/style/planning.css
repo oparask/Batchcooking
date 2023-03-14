@@ -87,6 +87,7 @@ body {
     text-align: start;
     background-color: rgba(0, 0, 0, 0.678);
     padding-left: 10px;
+    text-align: center;
 }
 
 #shoppingList button:hover {
