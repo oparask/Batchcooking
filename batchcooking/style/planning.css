@@ -5,11 +5,11 @@ body {
 
 #planning-container {
     display: grid;
-    grid-template-columns: 1.3fr 1.7fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas: "title title"
-        "calendar cards"
-        "shoppingList cards";
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto 1.8fr 2fr;
+    grid-template-areas: "title shoppingList"
+        "calendar calendar"
+        "cards cards";
     grid-gap: 1vh;
     height: 100%;
     background-color: rgba(183, 169, 158, 0.58);
@@ -20,9 +20,9 @@ body {
 #planningTitle {
     grid-area: title;
     text-align: center;
-    font-size: 2.3em;
+    font-size: 3em;
     margin: 0;
-    padding: 10px;
+    padding: 30px;
     font-family: 'Amatic SC', cursive;
     background-color: rgb(18, 16, 16);
     color: rgba(223, 160, 58, 0.973);
@@ -50,17 +50,20 @@ body {
     background: rgb(52, 62, 79);
 }
 
+
 /*CSS calendrier */
 #calendar {
     grid-area: calendar;
     box-shadow: 1px 1px 5px 5px rgb(110, 107, 104);
     border-radius: 10px;
-}
+} 
+
 
 /*CSS cards*/
 #cards {
     grid-area: cards;
-    overflow-y: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;
     background-color: rgb(235, 231, 226);
     box-shadow: 1px 1px 5px 5px rgba(97, 94, 93, 0.792);
     border-radius: 10px;
@@ -71,6 +74,7 @@ body {
 #shoppingList button {
     grid-area: shoppingList;
     width: 100%;
+    height: 100%;
     background-image: url(../style/img/fond_shoppingButton.jpg);
     background-size: cover;
     border-radius: 10px;

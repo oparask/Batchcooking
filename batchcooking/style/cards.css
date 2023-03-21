@@ -1,16 +1,15 @@
 #cards {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly; 
-    gap: 5em;
+    justify-content: flex-start; 
+    gap: 10em;
+    align-items: center;
 }
 
 .card {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 13em;
-    height: 21em;
+    justify-content: space-between;
+    min-width: 24em;
+    height: 11em;
     margin: 1em;
     border: 2px solid rgba(222, 201, 163, 0.228);
     border-radius: 20px;
@@ -24,22 +23,24 @@
 
 .photo {
     object-fit: cover;
-    height: 40%;
-    width: 100%;
-    border-radius: 19px 19px 0 0;
+    height: 100%;
+    width: 40%;
+    border-radius: 19px 0 0 19px;
 }
 
 .titre {
+    align-self: center;
     font-family: 'Satisfy', cursive;
     color: rgb(246, 73, 10);
     text-shadow: 0px 1px rgb(21, 7, 2);
-    height: 50%;
-    margin-left: 9px;
     font-size: 1.5em;
 }
 
 .tags {
-    margin: 16px 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    margin: 9px;
 }
 
 .protéines,
@@ -50,6 +51,7 @@
     font-family: 'Amatic SC', cursive;
     font-weight: bold;
     font-size: 1.3em;
+    margin: 8px;
 }
 
 .protéines {
@@ -67,7 +69,7 @@
 .icônes {
     position: absolute;
     top: 10px;
-    right: 10px;
+    left: 10px;
 }
 
 .icônes button {
