@@ -1,7 +1,9 @@
-body {
+#shopping-list-container{
     background-image: url(../style/img/fond_shopping_list.png);
     background-size: cover;
-    padding-top: 25px;
+   
+    height: 100vh;
+
 }
 
 #catégories {
@@ -26,6 +28,7 @@ h1 {
     margin-bottom: 25px;
     text-align: center;
     color: rgba(240, 248, 255, 0.829);
+    padding-top: 10px;
 }
 
 h2 {
