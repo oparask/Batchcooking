@@ -1,9 +1,7 @@
 #shopping-list-container{
     background-image: url(../style/img/fond_shopping_list.png);
     background-size: cover;
-   
     height: 100vh;
-
 }
 
 #catégories {
@@ -19,7 +17,7 @@
     border-radius: 10px;
 }
 
-h1 {
+#shopping-list-container h1 {
     font-family: 'Amatic SC', cursive;
     font-weight: bold;
     opacity: 70%;
@@ -31,6 +29,6 @@ h1 {
     padding-top: 10px;
 }
 
-h2 {
+#shopping-list-container h2 {
     font-family: 'Amatic SC', cursive;
 }
