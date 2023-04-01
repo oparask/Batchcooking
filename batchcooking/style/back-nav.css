@@ -1,4 +1,4 @@
-button {
+button.back-nav{
     color: rgb(97, 91, 74);
     background-color: rgba(255, 210, 127, 0);
     font-size: 1.5em;
@@ -11,7 +11,7 @@ button {
     left: 10px;
 }
 
-button:hover {
+button.back-nav:hover {
     cursor: pointer;
     color: rgb(146, 236, 90);
 }
