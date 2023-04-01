@@ -1,15 +1,17 @@
 html,
 body,
-#recipe-container {
+#recipe-container{
     height: 100%;
 }
 
-body {
+#recipe-container {
     background-image: url(../style/img/fond_recipe.jpg);
-    background-size: cover;
+    background-size:cover;
 }
 
-#recipe-container {
+#recipe-container-background{
+    background-color: rgba(232, 213, 186, 0.735);
+    height: 100%;
     display: grid;
     grid-template-columns: 100px 200px auto;
     grid-template-rows: 80px auto auto;
@@ -17,7 +19,6 @@ body {
         "retour image ingrédients"
         "retour étapes étapes";
     grid-gap: 4px;
-    background-color: rgba(232, 213, 186, 0.735);
 }
 
 h1 {
