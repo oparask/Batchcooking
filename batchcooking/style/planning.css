@@ -68,8 +68,11 @@ body {
 
 
 /*CSS shopping-list*/
-#shoppingList button {
+#shoppingList {
     grid-area: shoppingList;
+}
+
+#shoppingList button {
     width: 100%;
     background-image: url(../style/img/fond_shoppingButton.jpg);
     background-size: cover;
