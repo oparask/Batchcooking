@@ -20,10 +20,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--scripts-->
+    <script src="../batchcooking/scripts/jquery.min.js"></script>
+    <script src="../batchcooking/scripts/navigation.js"></script>
 </head>
 
 <body>
-    <div id="planning-container">
+    <div id="planning-container" class="hide">
         <h1 id="planningTitle">batchCooking.esi</h1>
         <!--calendar-->
         <div id="calendar">
@@ -218,35 +221,39 @@
         </div>
     </div>
 
+    <!--recipe-container-->
     <div id="recipe-container" class="hide">
-        <h1>Spaghetti Bolognaise</h1>
-        <button class="back-nav"><i class="fa-solid fa-circle-left"></i></button>
-        <img src="../img/recipes-pictures/spaghetti.jpg" alt="spaghetti" id="image">
-        <div id="ingrédients">
-            <ul>
-                <li>250g de spaghetti</li>
-                <li>1l d'eau</li>
-                <li>2c.à.c de sel</li>
-                <li>200gr de viande haché</li>
-                <li>4 tomates</li>
-                <li>1 oignon</li>
-                <li>1c.à.s d'huile d'olive</li>
-                <li>2-3 feuilles de basiliques</li>
-            </ul>
-        </div>
-        <div id="étapes">
-            <ol>
-                <li>Dans une poele, éplucher l'oignon et le faire réduire avec l'huile d'olive.</li>
-                <li>Ajoutez la viande et cuisez la à feu vif.</li>
-                <li>Couper les tomates en quartier et mettez les avec la viande et les oignons.</li>
-                <li>Pendant que la sauce mijote. faite bouillir l'eau.</li>
-                <li>Lorsque l'eau bout, ajoutez le sel et les spaghetti Mettez un cowercle et baissez le feu.</li>
-                <li>Laissez cuire 10 minutes.</li>
-                <li>Sewez et mettez les quelques feuilles de basilic sur la sauce.</li>
-            </ol>
+        <div id="recipe-container-background">
+            <h1>Spaghetti Bolognaise</h1>
+            <button class="back-nav"><i class="fa-solid fa-circle-left"></i></button>
+            <img src="../batchcooking/img/recipes-pictures/spaghetti.jpg" alt="spaghetti" id="recipe-image">
+            <div id="recipe-ingredients">
+                <ul>
+                    <li>250g de spaghetti</li>
+                    <li>1l d'eau</li>
+                    <li>2c.à.c de sel</li>
+                    <li>200gr de viande haché</li>
+                    <li>4 tomates</li>
+                    <li>1 oignon</li>
+                    <li>1c.à.s d'huile d'olive</li>
+                    <li>2-3 feuilles de basiliques</li>
+                </ul>
+            </div>
+            <div id="recipe-steps">
+                <ol>
+                    <li>Dans une poele, éplucher l'oignon et le faire réduire avec l'huile d'olive.</li>
+                    <li>Ajoutez la viande et cuisez la à feu vif.</li>
+                    <li>Couper les tomates en quartier et mettez les avec la viande et les oignons.</li>
+                    <li>Pendant que la sauce mijote. faite bouillir l'eau.</li>
+                    <li>Lorsque l'eau bout, ajoutez le sel et les spaghetti Mettez un cowercle et baissez le feu.</li>
+                    <li>Laissez cuire 10 minutes.</li>
+                    <li>Sewez et mettez les quelques feuilles de basilic sur la sauce.</li>
+                </ol>
+            </div>
         </div>
     </div>
 
+    <!--shopping-list-container-->
     <div id="shopping-list-container" class="hide">
         <h1>Liste de courses</h1>
         <button class="back-nav"><i class="fa-solid fa-circle-left"></i></button>
@@ -299,47 +306,54 @@
                 </ul>
             </div>
         </div>
-
-        <template id="card" class="hide">
-            <div id="cards">
-                <div id="recetteChili" class="card selected">
-                    <img src="../img/cards/chili.jpg" alt="chili" title="chili" class="photo">
-                    <div class="icônes">
-                        <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
-                        <button class="calendrier"><i class="fa-solid fa-calendar-day"></i></button>
-                    </div>
-                    <h3 class="titre">Chili</h3>
-                    <p class="tags">
-                        <span class=protéines>Protéines</span>
-                        <span class=légumes>Légumes</span>
-                    </p>
+    </div>
+    <!--cards-->
+    <template id="card" class="hide">
+        <div id="cards">
+            <div id="recetteChili" class="card selected">
+                <img src="../img/cards/chili.jpg" alt="chili" title="chili" class="photo">
+                <div class="icônes">
+                    <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
+                    <button class="calendrier"><i class="fa-solid fa-calendar-day"></i></button>
                 </div>
-                <div id="recetteRiz" class="card scheduled">
-                    <img src="../img/cards/riz.jpg" alt="riz" title="riz" class="photo">
-                    <div class="icônes">
-                        <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
-                        <button class="calendrier"><i class="fa-solid fa-calendar-day"></i></button>
-                    </div>
-                    <h3 class="titre">Riz</h3>
-                    <p class="tags">
-                        <span class=féculents>Féculents</span>
-                    </p>
-                </div>
-                <div id="recetteLasagne" class="card">
-                    <img src="../img/cards/lasagne.jpg" alt="lasagne" title="lasagne" class="photo">
-                    <div class="icônes">
-                        <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
-                        <button class="calendrier"><i class="fa-solid fa-calendar-day"></i></button>
-                    </div>
-                    <h3 class="titre">Lasagnes</h3>
-                    <p class="tags">
-                        <span class=protéines>Protéines</span>
-                        <span class=légumes>Légumes</span>
-                        <span class=féculents>Féculents</span>
-                    </p>
-                </div>
+                <h3 class="titre">Chili</h3>
+                <p class="tags">
+                    <span class=protéines>Protéines</span>
+                    <span class=légumes>Légumes</span>
+                </p>
             </div>
-        </template>
+            <div id="recetteRiz" class="card scheduled">
+                <img src="../img/cards/riz.jpg" alt="riz" title="riz" class="photo">
+                <div class="icônes">
+                    <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
+                    <button class="calendrier"><i class="fa-solid fa-calendar-day"></i></button>
+                </div>
+                <h3 class="titre">Riz</h3>
+                <p class="tags">
+                    <span class=féculents>Féculents</span>
+                </p>
+            </div>
+            <div id="recetteLasagne" class="card">
+                <img src="../img/cards/lasagne.jpg" alt="lasagne" title="lasagne" class="photo">
+                <div class="icônes">
+                    <button class="recette"><i class="fa-solid fa-circle-info"></i></button>
+                    <button class="calendrier"><i class="fa-solid fa-calendar-day"></i></button>
+                </div>
+                <h3 class="titre">Lasagnes</h3>
+                <p class="tags">
+                    <span class=protéines>Protéines</span>
+                    <span class=légumes>Légumes</span>
+                    <span class=féculents>Féculents</span>
+                </p>
+            </div>
+        </div>
+    </template>
+   <script>
+       // $("#recipe-container").hide();
+        // $("#shopping-list-container").hide();
+       // $("#planning-container").hide(); 
+    </script>
+    
 </body>
 
 </html>
