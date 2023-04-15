@@ -1,7 +1,7 @@
 #shopping-list-container{
     background-image: url(../style/img/fond_shopping_list.png);
     background-size: cover;
-    height: 100vh;
+    padding-bottom: 85px;
 }
 
 #catégories {

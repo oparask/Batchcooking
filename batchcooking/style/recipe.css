@@ -1,9 +1,3 @@
-html,
-body,
-#recipe-container{
-    height: 100%;
-}
-
 #recipe-container {
     background-image: url(../style/img/fond_recipe.jpg);
     background-size:cover;
@@ -11,17 +5,16 @@ body,
 
 #recipe-container-background{
     background-color: rgba(232, 213, 186, 0.735);
-    height: 100%;
     display: grid;
-    grid-template-columns: 100px 200px auto;
-    grid-template-rows: 80px auto auto;
+    grid-template-columns: 0.7fr 1.5fr 7fr;
+    grid-template-rows: auto 0.5fr 1fr;
     grid-template-areas: "retour titre ."
         "retour image ingrédients"
         "retour étapes étapes";
     grid-gap: 4px;
 }
 
-h1 {
+#recipe-container h1 {
     grid-area: titre;
     font-size: 2em;
     font-family: 'Amatic SC', cursive;
@@ -29,7 +22,7 @@ h1 {
     text-shadow: 1px 1px rgba(229, 210, 168, 0.386);
 }
 
-#image {
+#recipe-image {
     grid-area: image;
     align-self: center;
     box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.475);
@@ -37,9 +30,10 @@ h1 {
     width: 100%;
     object-fit: cover;
     opacity: 80%;
+    min-width: 200px;
 }
 
-#ingrédients {
+#recipe-ingredients {
     font-family: 'Satisfy', cursive;
     grid-area: ingrédients;
     align-self: center;
@@ -47,12 +41,12 @@ h1 {
     text-shadow: 1px 0px rgba(194, 189, 170, 0.877);
 }
 
-#ingrédients ul {
+#recipe-ingredients ul {
     list-style-type: circle;
     align-self: center;
 }
 
-#étapes {
+#recipe-steps {
     font-family: 'Satisfy', cursive;
     grid-area: étapes;
     font-size: 1.5em;
