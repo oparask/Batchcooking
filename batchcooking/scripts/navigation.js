@@ -33,13 +33,23 @@ function showShoppingListAction() {
 function showPlanningAction() {
     hideAllContainers();
     $("#planning-container").show();
+    $("title").text("Planning");
 }
 /**
  * Main function.
  */
 $(function () {
-    //showRecipeAction();
+    showRecipeAction();
     //showPlanningAction();
-    showShoppingListAction();
+    //showShoppingListAction();
+
+    $(".back-nav").click(() => {
+        showPlanningAction();
+    });
+    
 });
+
+
+
+
 
