@@ -1,33 +1,45 @@
 "use strict";
 
-    //Cache tous les conteneurs au depart
+/**
+ * Hide all containers on departure.
+ */
 function hideAllContainers() {
     $("#planning-container").hide();
     $("#recipe-container").hide();
     $("#shopping-list-container").hide();
 }
 
-//Permet d’afficher le conteneur recipe-container 
+/**
+ * Allows to display the container recipe-container.
+ */
 function showRecipeAction() {
     hideAllContainers();
     $("#recipe-container").show();
+    $("title").text("Recipe");
 }
 
-//Permet d’afficher le conteneur shopping-list-container
+/**
+ * Allows to display the shopping-list-container.
+ */
 function showShoppingListAction() {
     hideAllContainers();
     $("#shopping-list-container").show();
+    $("title").text("Shopping list");
 }
 
-//Permet d’afficher le conteneur planning-container 
+/**
+ * Allows to display the container planning-container.
+ */
 function showPlanningAction() {
     hideAllContainers();
     $("#planning-container").show();
 }
-
-$(function() {
-   //showRecipeAction();
-   showPlanningAction();
-   //showShoppingListAction();
+/**
+ * Main function.
+ */
+$(function () {
+    //showRecipeAction();
+    //showPlanningAction();
+    showShoppingListAction();
 });
- 
+
