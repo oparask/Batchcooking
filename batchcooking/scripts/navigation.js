@@ -39,9 +39,9 @@ function showPlanningAction() {
  * Main function.
  */
 $(function () {
-    showRecipeAction();
+    //showRecipeAction();
     //showPlanningAction();
-    //showShoppingListAction();
+    showShoppingListAction();
 
     $(".back-nav").click(() => {
         showPlanningAction();
