@@ -17,12 +17,14 @@ request.onload = function () {
 
 /**
  * ...
- * @param {object} data ...
+ * @param {any} data ...
  */
 function loadCards(data) {
-    const recipes = data;
-    $("#recipe-container h1").text(data["recipes"][0]["recipeName"])
+    //$("#recipe-container h1").text(data.recipes[0]["recipeName"])
     console.table(data);
+    for(let i = 0; i<data.recipes.length; i++){
+        console.log(data.recipes[i].recipeName);
+    }
     
    
 
