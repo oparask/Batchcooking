@@ -1,4 +1,10 @@
-.hide{
-    display: none;
-    /*visibility: hidden*/
+html, body{
+   height: 100%;
 }
+
+#recipe-container, #shopping-list-container, #recipe-container-background {
+    min-height: 100%;
+}
+
+
+
