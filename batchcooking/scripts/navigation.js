@@ -1,20 +1,12 @@
 "use strict";
 
 /**
- * Hide all containers on departure.
- */
-function hideAllContainers() {
-    $("#planning-container").hide();
-    $("#recipe-container").hide();
-    $("#shopping-list-container").hide();
-}
-
-/**
  * Allows to display the container recipe-container.
  */
 function showRecipeAction() {
-    hideAllContainers();
-    $("#recipe-container").show();
+    $("#planning-container").addClass("hide");
+    $("#shopping-list-container").addClass("hide");
+    $("#recipe-container").removeClass("hide");
     $("title").text("Recipe");
 }
 
@@ -22,8 +14,9 @@ function showRecipeAction() {
  * Allows to display the shopping-list-container.
  */
 function showShoppingListAction() {
-    hideAllContainers();
-    $("#shopping-list-container").show();
+    $("#planning-container").addClass("hide");
+    $("#recipe-container").addClass("hide");
+    $("#shopping-list-container").removeClass("hide");
     $("title").text("Shopping list");
 }
 
@@ -31,25 +24,21 @@ function showShoppingListAction() {
  * Allows to display the container planning-container.
  */
 function showPlanningAction() {
-    hideAllContainers();
-    $("#planning-container").show();
+    $("#recipe-container").addClass("hide");
+    $("#shopping-list-container").addClass("hide");
+    $("#planning-container").removeClass("hide");
     $("title").text("Planning");
 }
+
 /**
  * Main function.
  */
 $(function () {
-    //showRecipeAction();
+    showRecipeAction();
     //showPlanningAction();
-    showShoppingListAction();
+    //showShoppingListAction();
 
-    $(".back-nav").click(() => {
+    $(".back-nav").on("click", () => {
         showPlanningAction();
     });
-    
 });
-
-
-
-
-
