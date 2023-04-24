@@ -23,32 +23,57 @@ request.onload = function () {
 function loadCards(data) {
     console.table(data);
     /*for (let i = 0; i < data.recipes.length; i++) {
-        console.log(data.recipes[i].recipeName);
-    }
+         console.log(data.recipes[i].recipeName);
+   }
     */
-
-    let image = $(".photo");
-
-    for (let i = 0; i < data.recipes.length; i++) {
-        const template = /** @type{HTMLTemplateElement} */ (document.getElementById("card"));
+    const template = /** @type{HTMLTemplateElement} */ (document.getElementById("card"));
+    for (const recette of data.recipes) {
         const clone = /** @type{HTMLDivElement} */ (template.content.cloneNode(true));
         const card = $(clone);
-
-        $(".titre").text(data.recipes[i].recipeName);
-        
-        //ajouter les apports 
-        for (let j = 0; i < data.recipes[i].supplies.length; j++) {
-            switch(data.recipes[i].supplies[j]){
-                case "proteins":  $(".tags").text(data.recipes[i].supplies[j]);
-                case "starches" : $(".féculents").text(data.recipes[i].supplies[j]);
-                case "vegetables" :  $(".légumes").text(data.recipes[i].supplies[j]);
+        const img = $(".photo", card);
+        //image
+        img.attr("src", recette.imageLink);
+        img.attr("alt", recette.recipeName);
+        img.attr("title", recette.recipeName);
+        //titre
+        $(".titre", card).text(recette.recipeName);
+        //ajouter les apports;
+        for (const tag of recette.supplies) {
+            switch (tag) {
+            case "proteins":
+                $(".tags", card).append(
+                    $("<span>")
+                        .addClass("protéines")
+                        .text("Protéines")
+                );
+                break;
+            case "starches":
+                $(".tags", card).append(
+                    $("<span>")
+                        .addClass("féculents")
+                        .text("Féculents")
+                );
+                break;
+            case "vegetables":
+                $(".tags", card).append(
+                    $("<span>")
+                        .addClass("légumes")
+                        .text("Légumes")
+                );
+                break;
             }
-            
-
         }
-        $(".tags").text(data.recipes[i].supplies[0]);
-
-
+        infoButton(card, recette);
+        $("#cards").append(card);
     }
+}
 
+/**
+ * @param {JQuery<HTMLDivElement>} card
+ * @param {Recipe} recette
+ */
+function infoButton(card, recette) {
+    $(".icônes .recette", card).on("click", () => {
+        showRecipeAction();
+    });
 }
