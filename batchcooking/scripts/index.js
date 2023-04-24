@@ -63,6 +63,7 @@ function loadCards(data) {
                 break;
             }
         }
+        //pour recette
         infoButton(card, recette);
         $("#cards").append(card);
     }
@@ -74,6 +75,17 @@ function loadCards(data) {
  */
 function infoButton(card, recette) {
     $(".icônes .recette", card).on("click", () => {
+        //titre
+        $("#recipe-container h1").text(recette.recipeName);
+        const img = $("#recipe-image");
+        //image
+        img.attr("src", recette.imageLink);
+        img.attr("alt", recette.recipeName);
+        img.attr("title", recette.recipeName);
         showRecipeAction();
     });
+}
+fillRecipe(recipe, units){
+    
+
 }
