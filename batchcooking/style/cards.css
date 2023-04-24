@@ -47,6 +47,7 @@
 .légumes {
     border-radius: 10px;
     padding: 5px 2px;
+    margin: 2px;
     font-family: 'Amatic SC', cursive;
     font-weight: bold;
     font-size: 1.3em;
