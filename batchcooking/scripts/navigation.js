@@ -30,15 +30,18 @@ function showPlanningAction() {
     $("title").text("Planning");
 }
 
+function navigationButton() {
+    $(".back-nav").on("click", () => {
+        showPlanningAction();
+    });
+}
+
 /**
  * Main function.
  */
 $(function () {
-    showRecipeAction();
-    //showPlanningAction();
+    //showRecipeAction();
+    showPlanningAction();
     //showShoppingListAction();
-
-    $(".back-nav").on("click", () => {
-        showPlanningAction();
-    });
+    navigationButton();
 });
