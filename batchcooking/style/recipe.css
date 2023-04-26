@@ -1,10 +1,11 @@
 #recipe-container {
-    background-image: url(../style/img/fond_recipe.jpg);
+    background-image:
+        linear-gradient(rgba(232, 213, 186, 0.735), rgba(232, 213, 186, 0.735)),
+        url(../style/img/fond_recipe.jpg);
     background-size:cover;
 }
 
 #recipe-container-background{
-    background-color: rgba(232, 213, 186, 0.735);
     display: grid;
     grid-template-columns: 0.7fr 1.5fr 7fr;
     grid-template-rows: auto 0.5fr 1fr;
@@ -28,9 +29,10 @@
     box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.475);
     border-radius: 10px;
     width: 100%;
-    object-fit: cover;
-    opacity: 80%;
+    height: 200px;
     min-width: 200px;
+    object-fit: cover;
+    opacity: 90%;
 }
 
 #recipe-ingredients {
