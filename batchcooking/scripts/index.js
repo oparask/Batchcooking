@@ -5,17 +5,6 @@ fetch("https://git.esi-bru.be/api/v4/projects/40922/repository/files/recipes.jso
     .then(loadCards)
     .catch(alert);
 
-/**let requestURL = 'https://git.esi-bru.be/api/v4/projects/40922/repository/files/recipes.json/raw';
-let request = new XMLHttpRequest();
-request.open('GET', requestURL);
-request.responseType = 'json';
-request.send();
-request.onload = function () {
-    let data = request.response;
-    loadCards(data);
-}
-*/
-
 /**
  * ...
  * @param {RecipesAndUnits} data ...
@@ -64,7 +53,7 @@ function loadCards(data) {
             }
         }
         //pour recette
-        infoButton(card, recette);
+        infoButton(card, recette, data.units);
         $("#cards").append(card);
     }
 }
@@ -72,8 +61,9 @@ function loadCards(data) {
 /**
  * @param {JQuery<HTMLDivElement>} card
  * @param {Recipe} recette
+ * @param {Object<string, string>} units ...
  */
-function infoButton(card, recette) {
+function infoButton(card, recette, units) {
     $(".icônes .recette", card).on("click", () => {
         //titre
         $("#recipe-container h1").text(recette.recipeName);
@@ -83,9 +73,37 @@ function infoButton(card, recette) {
         img.attr("alt", recette.recipeName);
         img.attr("title", recette.recipeName);
         showRecipeAction();
+        fillRecipe(recette, units);
     });
 }
-fillRecipe(recipe, units){
-    
 
+/**
+ * @param {Recipe} recette ...
+ * @param {Object<string, string>} units ...
+ */
+function fillRecipe(recette, units) {
+    $("#recipe-ingredients ul").empty();
+    $("#recipe-steps ol").empty();
+    for (const ingrédient of recette.ingredients) {
+        const nom = ingrédient.ingredientName;
+        if ("quantity" in ingrédient) {
+            const quantité = ingrédient.quantity;
+            const unité = units[ingrédient.unit];
+            $("#recipe-ingredients ul").append(
+                $("<li>")
+                    .text(`${quantité} ${unité} ${nom}`)
+            );
+        } else {
+            $("#recipe-ingredients ul").append(
+                $("<li>")
+                    .text(nom)
+            );
+        }
+    }
+    for (const étape of recette.steps) {
+        $("#recipe-steps ol").append(
+            $("<li>")
+                .text(étape)
+        );
+    }
 }
