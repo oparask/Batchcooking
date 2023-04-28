@@ -30,6 +30,9 @@ function showPlanningAction() {
     $("title").text("Planning");
 }
 
+/**
+ * Allows to displays the main page which is the planning;
+ */
 function navigationButton() {
     $(".back-nav").on("click", () => {
         showPlanningAction();

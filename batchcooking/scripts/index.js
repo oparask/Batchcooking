@@ -6,7 +6,8 @@ fetch("https://git.esi-bru.be/api/v4/projects/40922/repository/files/recipes.jso
     .catch(alert);
 
 /**
- * ...
+ * Displays the recovered recipes data;
+ * 
  * @param {RecipesAndUnits} data ...
  */
 function loadCards(data) {
@@ -59,6 +60,8 @@ function loadCards(data) {
 }
 
 /**
+ * Adds the cards for each of the recipes.
+ * 
  * @param {JQuery<HTMLDivElement>} card
  * @param {Recipe} recette
  * @param {Object<string, string>} units ...
@@ -78,6 +81,9 @@ function infoButton(card, recette, units) {
 }
 
 /**
+ * Allows you to modify the container "reciper-container"
+ * to display the recipe passed in parameter.
+ * 
  * @param {Recipe} recette ...
  * @param {Object<string, string>} units ...
  */
