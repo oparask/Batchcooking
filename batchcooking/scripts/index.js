@@ -1,6 +1,6 @@
 "use strict";
 
-fetch("https://git.esi-bru.be/api/v4/projects/40922/repository/files/recipes.json/raw")
+fetch("https://git.esi-bru.be/api/v4/projects/40922/repository/files/recipes-it3.json/raw")
     .then((response) => response.json())
     .then(loadCards)
     .catch(alert);
@@ -8,7 +8,7 @@ fetch("https://git.esi-bru.be/api/v4/projects/40922/repository/files/recipes.jso
 /**
  * Displays the recovered recipes data;
  * 
- * @param {RecipesAndUnits} data ...
+ * @param {RecipesAndRelatedData} data ...
  */
 function loadCards(data) {
     console.table(data);
@@ -28,8 +28,29 @@ function loadCards(data) {
         //titre
         $(".titre", card).text(recette.recipeName);
         //ajouter les apports;
-        for (const tag of recette.supplies) {
-            switch (tag) {
+        const tab = new Array(3);
+       for (const ingrédient of recette.ingredients) {
+           const ingredientName = ingrédient.ingredientName;
+           const ingredientsData = data.ingredientsData[ingrédient.ingredientName];
+
+           const intakes = ingredientsData.intakes;
+        
+
+           if(intakes!==undefined){
+               for(const tag of intakes){
+                if(!tab.includes(tag)){
+                    tab.push(tag);
+                    $(".tags", card).append(
+                      $("<span>")
+                          .addClass(data.intakes[tag])
+                          .text(data.intakes[tag])
+                  );
+                }
+               }
+           }
+
+
+           /*switch (intakes) {
             case "proteins":
                 $(".tags", card).append(
                     $("<span>")
@@ -51,8 +72,11 @@ function loadCards(data) {
                         .text("Légumes")
                 );
                 break;
-            }
+            }*/
         }
+        
+        tab.length = 0;
+        
         //pour recette
         infoButton(card, recette, data.units);
         $("#cards").append(card);
