@@ -31,7 +31,7 @@ function loadCards(data) {
         const tab = new Array(3);
        for (const ingrédient of recette.ingredients) {
            const ingredientName = ingrédient.ingredientName;
-           const ingredientsData = data.ingredientsData[ingrédient.ingredientName];
+           const ingredientsData = data.ingredientsData[ingredientName];
 
            const intakes = ingredientsData.intakes;
         
@@ -78,7 +78,7 @@ function loadCards(data) {
         tab.length = 0;
         
         //pour recette
-        infoButton(card, recette, data.units);
+        infoButton(card, recette, data.units, data);
         $("#cards").append(card);
     }
 }
@@ -89,8 +89,9 @@ function loadCards(data) {
  * @param {JQuery<HTMLDivElement>} card
  * @param {Recipe} recette
  * @param {Object<string, string>} units ...
+ * @param {RecipesAndRelatedData} data ...
  */
-function infoButton(card, recette, units) {
+function infoButton(card, recette, units, data) {
     $(".icônes .recette", card).on("click", () => {
         //titre
         $("#recipe-container h1").text(recette.recipeName);
@@ -100,7 +101,7 @@ function infoButton(card, recette, units) {
         img.attr("alt", recette.recipeName);
         img.attr("title", recette.recipeName);
         showRecipeAction();
-        fillRecipe(recette, units);
+        fillRecipe(recette, units, data);
     });
 }
 
@@ -108,14 +109,16 @@ function infoButton(card, recette, units) {
  * Allows you to modify the container "reciper-container"
  * to display the recipe passed in parameter.
  * 
+ * @param {RecipesAndRelatedData} data ...
  * @param {Recipe} recette ...
  * @param {Object<string, string>} units ...
  */
-function fillRecipe(recette, units) {
+function fillRecipe(recette, units, data) {
     $("#recipe-ingredients ul").empty();
     $("#recipe-steps ol").empty();
     for (const ingrédient of recette.ingredients) {
-        const nom = ingrédient.ingredientName;
+        //const nom = ingrédient.ingredientName; //en anglais
+        const nom = data.ingredientsData[ingrédient.ingredientName].fr
         if ("quantity" in ingrédient) {
             const quantité = ingrédient.quantity;
             const unité = units[ingrédient.unit];
