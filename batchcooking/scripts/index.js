@@ -140,3 +140,24 @@ function fillRecipe(recette, units, data) {
         );
     }
 }
+
+function selectCard() {
+    // Sélectionner toutes les cartes
+    var cards = $('.card');
+  
+    // Ajouter un écouteur d'événements de clic au bouton "calendrier" dans toutes les cartes
+    cards.find('.calendrier').on('click', function(event) {
+        event.stopPropagation(); // Empêcher la propagation de l' évenement aux elemants parents
+
+      // Réinitialiser le style de toutes les cartes
+      cards.removeClass('selected');
+  
+      // Appliquer le style sélectionné à la carte cliquée
+      $(this).addClass('selected');
+  
+      // Retenir la carte sélectionnée (vous pouvez utiliser cette variable pour d'autres opérations)
+      var cardSelectionnee = $(this);
+  
+      // Faites d'autres opérations avec la carte sélectionnée ici
+    });
+  }
