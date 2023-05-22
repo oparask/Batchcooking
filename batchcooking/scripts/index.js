@@ -20,8 +20,10 @@ function loadCards(data) {
     for (const recette of data.recipes) {
         const clone = /** @type{HTMLDivElement} */ (template.content.cloneNode(true));
         const card = $(clone);
-        const img = $(".photo", card);
+        console.log(card);
+
         //image
+        const img = $(".photo", card);
         img.attr("src", recette.imageLink);
         img.attr("alt", recette.recipeName);
         img.attr("title", recette.recipeName);
@@ -29,58 +31,44 @@ function loadCards(data) {
         $(".titre", card).text(recette.recipeName);
         //ajouter les apports;
         const tab = new Array(3);
-       for (const ingrédient of recette.ingredients) {
-           const ingredientName = ingrédient.ingredientName;
-           const ingredientsData = data.ingredientsData[ingredientName];
+        for (const ingrédient of recette.ingredients) {
+            const ingredientName = ingrédient.ingredientName;
+            const ingredientsData = data.ingredientsData[ingredientName];
 
-           const intakes = ingredientsData.intakes;
-        
+            const intakes = ingredientsData.intakes;
 
-           if(intakes!==undefined){
-               for(const tag of intakes){
-                if(!tab.includes(tag)){
-                    tab.push(tag);
-                    $(".tags", card).append(
-                      $("<span>")
-                          .addClass(data.intakes[tag])
-                          .text(data.intakes[tag])
-                  );
+
+            if (intakes !== undefined) {
+                for (const tag of intakes) {
+                    if (!tab.includes(tag)) {
+                        tab.push(tag);
+                        $(".tags", card).append(
+                            $("<span>")
+                                .addClass(data.intakes[tag])
+                                .text(data.intakes[tag])
+                        );
+                    }
                 }
-               }
-           }
-
-
-           /*switch (intakes) {
-            case "proteins":
-                $(".tags", card).append(
-                    $("<span>")
-                        .addClass("protéines")
-                        .text("Protéines")
-                );
-                break;
-            case "starches":
-                $(".tags", card).append(
-                    $("<span>")
-                        .addClass("féculents")
-                        .text("Féculents")
-                );
-                break;
-            case "vegetables":
-                $(".tags", card).append(
-                    $("<span>")
-                        .addClass("légumes")
-                        .text("Légumes")
-                );
-                break;
-            }*/
+            }
         }
-        
+
         tab.length = 0;
-        
+
         //pour recette
         infoButton(card, recette, data.units, data);
+
+        // Reste du code pour créer la carte...
+
+        card.find(".calendrier").on("click", function () {
+            // Sélectionner une carte
+            // @ts-ignore
+            selectedCard(recette, this);
+        })
+
+        //clone de la carte à la fin
         $("#cards").append(card);
     }
+
 }
 
 /**
@@ -141,23 +129,88 @@ function fillRecipe(recette, units, data) {
     }
 }
 
-function selectCard() {
-    // Sélectionner toutes les cartes
-    var cards = $('.card');
-  
-    // Ajouter un écouteur d'événements de clic au bouton "calendrier" dans toutes les cartes
-    cards.find('.calendrier').on('click', function(event) {
-        event.stopPropagation(); // Empêcher la propagation de l' évenement aux elemants parents
+/**
+ * @type {Recipe|undefined}
+ */
+let selectedCardData;
 
-      // Réinitialiser le style de toutes les cartes
-      cards.removeClass('selected');
-  
-      // Appliquer le style sélectionné à la carte cliquée
-      $(this).addClass('selected');
-  
-      // Retenir la carte sélectionnée (vous pouvez utiliser cette variable pour d'autres opérations)
-      var cardSelectionnee = $(this);
-  
-      // Faites d'autres opérations avec la carte sélectionnée ici
-    });
-  }
+/**
+ * @type {Recipe[]} - tableau de recettes
+ */
+const tabSelecetedCards = new Array();
+
+/**
+ * Adds the cards in the planning
+ * 
+ * @param {Recipe} recette
+ * @param {any} button
+ * 
+ */
+function selectedCard(recette, button) {
+    console.log(recette);
+
+    if ($(button).parent().parent().hasClass("selected")) {
+        $(button).parent().parent().removeClass("selected")
+        selectedCardData = undefined;
+    }
+    else {
+        console.log("pas de class");
+        $(button).parent().parent().addClass("selected")
+        selectedCardData = recette;
+    }
+
+    addCardPlanning(recette);
+
+}
+
+/**
+ * 
+ * @param {Recipe} recette 
+ */
+function addCardPlanning(recette) {
+    // Supprimer les gestionnaires d'événements click précédents
+    $('.jour').off('click');
+
+    if (selectedCardData) {
+        console.log(selectedCardData);
+        // opérations avec la carte sélectionnée ici
+        // parcourir tous les jours du planning
+        let days = $('.jour');
+
+        days.each(function () {
+            let day = $(this);
+            day.on('click', function () {
+                //récuperer le titre de la carte selectionnee
+                day.append(
+                    $("<p>")
+                        // @ts-ignore
+                        .text(selectedCardData.recipeName)
+                );
+
+                //je rajoute la carte dans le tableau 
+                tabSelecetedCards.push(recette);
+                console.log(tabSelecetedCards);
+            })
+
+        });
+
+    }
+}
+
+function removeCardPlanning() {
+    // Supprimer les gestionnaires d'événements click précédents
+    $('.jour').off('click');
+    let days = $('.jour');
+    //ajouter un ecouteur d'evenement de clic aux paragraphes du planning
+    days.on('click', 'p', function () {
+        let recetteNom = $(this).text();
+
+        //supprimer le paragraphe du plannig
+        $(this).remove();
+
+        //
+
+    })
+
+
+}
