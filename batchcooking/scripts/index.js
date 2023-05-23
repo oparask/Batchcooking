@@ -67,9 +67,12 @@ function loadCards(data) {
 
         //clone de la carte à la fin
         $("#cards").append(card);
+
     }
 
+    $(".shoppingList").on("click", getShowShoppingListAction(data));
 }
+
 
 /**
  * Adds the cards for each of the recipes.
@@ -234,10 +237,9 @@ function removeCardPlanning() {
                 }
             });
 
-
             console.log(tabSelecetedCards);
             //Enlever la classe scheduled des cartes qui se toruvent pas dans le planning
-            checkClassCards();
+            checkClassScheduledCards();
 
 
         });
@@ -246,19 +248,83 @@ function removeCardPlanning() {
 }
 
 
-function checkClassCards() {
+function checkClassScheduledCards() {
     let cards = $('.card');
     cards.removeClass('scheduled');
-  
+
     if (tabSelecetedCards.length > 0) {
-      tabSelecetedCards.forEach(function (recette) {
-        cards.each(function () {
-          let card = $(this);
-          if (recette.recipeName === $('.titre', card).text()) {
-            card.addClass('scheduled');
-          }
+        tabSelecetedCards.forEach(function (recette) {
+            cards.each(function () {
+                let card = $(this);
+                if (recette.recipeName === $('.titre', card).text()) {
+                    card.addClass('scheduled');
+                }
+            });
         });
-      });
     }
-  }
+}
+
+
+
+/**
+ * Remplit la liste de courses en fonction des recettes sélectionnées.
+ * @param {RecipesAndRelatedData} data - Les données des recettes et des catégories.
+ */
+function fillShoppingList(data) {
+
+    const LISTE = new Set();
+    const tabCategories = new Set();
+
+    let tabSelecetedCardsSet = [...new Set(tabSelecetedCards)];
+
+    tabSelecetedCardsSet.forEach((recette) => {
+        recette.ingredients.forEach((/** @type {{ ingredientName: string | number; }} */ ingredient) => {
+            const ingredientData = data.ingredientsData[ingredient.ingredientName];
+            if (ingredientData && ingredientData.category) {
+                const categoryName = data.categories[ingredientData.category];
+                if (categoryName) {
+                    const translatedIngredient = ingredientData.fr;
+                    // @ts-ignore
+                    if (!LISTE[categoryName]) {
+                        // @ts-ignore
+                        LISTE[categoryName] = new Set();
+                        tabCategories.add(categoryName);
+                    }
+                    // @ts-ignore
+                    LISTE[categoryName].add(translatedIngredient);
+                }
+            }
+        });
+    });
+
+    const listeDeCourse = $("#catégories");
+    listeDeCourse.empty();
+
+    tabCategories.forEach((category) => {
+        const div = $('<div class="categorie">');
+        const elem = $("<ul>");
+        div.append(elem.append($("<h2>").text(category)));
+        // @ts-ignore
+        if (LISTE[category]) { // on vérifie si la catégorie est dans la liste
+            // @ts-ignore
+            LISTE[category].forEach((/** @type {string | number | boolean | ((this: HTMLElement, index: number, text: string) => string | number | boolean)} */ ingredientName) => {
+                div.append(elem.append($("<li>").text(ingredientName)));
+            });
+        }
+        listeDeCourse.append(div);
+    });
+}
+
+/**
+ * Récupère l'action d'affichage de la liste de courses avec les données.
+* @param {RecipesAndRelatedData} data - Les données des recettes et des catégories.
+* @returns - L'action d'affichage de la liste de courses.
+**/
+function getShowShoppingListAction(data) {
+    return function () {
+        showShoppingListAction(data);
+    };
+}
+
+
 

@@ -11,14 +11,18 @@ function showRecipeAction() {
 }
 
 /**
- * Allows to display the shopping-list-container.
+ * Affiche la liste de courses en masquant le planning et les cartes qui contiennent les recettes.
+ * @param {RecipesAndRelatedData} data
  */
-function showShoppingListAction() {
+function showShoppingListAction(data) {
     $("#planning-container").addClass("hide");
     $("#recipe-container").addClass("hide");
     $("#shopping-list-container").removeClass("hide");
     $("title").text("Shopping list");
+    fillShoppingList(data);
 }
+
+
 
 /**
  * Allows to display the container planning-container.
@@ -39,6 +43,7 @@ function navigationButton() {
     });
 }
 
+
 /**
  * Main function.
  */
@@ -48,3 +53,6 @@ $(function () {
     //showShoppingListAction();
     navigationButton();
 });
+
+
+
