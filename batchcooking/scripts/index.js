@@ -149,25 +149,28 @@ const tabSelecetedCards = new Array();
 function selectedCard(recette, button) {
     console.log(recette);
 
+
     if ($(button).parent().parent().hasClass("selected")) {
         $(button).parent().parent().removeClass("selected")
         selectedCardData = undefined;
     }
     else {
-        console.log("pas de class");
+        // Une seule fiche peut-être sélectionnée à la fois
+        let cards = $('.card');
+        cards.removeClass('selected');
         $(button).parent().parent().addClass("selected")
         selectedCardData = recette;
     }
 
-    addCardPlanning(recette);
-
+    addOrRmoveCardPlanning(recette, button);
 }
 
 /**
  * 
  * @param {Recipe} recette 
+ * @param {any} button
  */
-function addCardPlanning(recette) {
+function addOrRmoveCardPlanning(recette, button) {
     // Supprimer les gestionnaires d'événements click précédents
     $('.jour').off('click');
 
@@ -187,30 +190,75 @@ function addCardPlanning(recette) {
                         .text(selectedCardData.recipeName)
                 );
 
+                // je lui ajoue la classe scheduled 
+                // $(button).parent().parent().removeClass("selected")
+                $(button).parent().parent().addClass("scheduled")
+
                 //je rajoute la carte dans le tableau 
                 tabSelecetedCards.push(recette);
                 console.log(tabSelecetedCards);
             })
 
         });
+    } else {
+
+        //supprimer l'element ajouté dans planning lorsque aucune carte est selectionnée
+        removeCardPlanning();
 
     }
+
+
 }
 
 function removeCardPlanning() {
     // Supprimer les gestionnaires d'événements click précédents
-    $('.jour').off('click');
+    $('.jour p').off('click');
+
     let days = $('.jour');
-    //ajouter un ecouteur d'evenement de clic aux paragraphes du planning
-    days.on('click', 'p', function () {
-        let recetteNom = $(this).text();
+    //ajouter un ecouteur d'evenement de clic aux paragraphes de jours du planning
+    days.each(function () {
+        let day = $(this);
+        day.on('click', 'p', function () {
+            let recetteNom = $(this).text();
 
-        //supprimer le paragraphe du plannig
-        $(this).remove();
-
-        //
-
-    })
+            //supprimer le paragraphe du plannig
+            $(this).remove();
 
 
+            let removed = false; // Flag variable to track removal
+            // Retirer la recette correspondante du tableau tabSelecetedCards
+            tabSelecetedCards.forEach(function (recette, index) {
+                if (!removed && recette.recipeName === recetteNom) {
+                    tabSelecetedCards.splice(index, 1);
+                    removed = true; // Set the flag to true
+                }
+            });
+
+
+            console.log(tabSelecetedCards);
+            //Enlever la classe scheduled des cartes qui se toruvent pas dans le planning
+            checkClassCards();
+
+
+        });
+
+    });
 }
+
+
+function checkClassCards() {
+    let cards = $('.card');
+    cards.removeClass('scheduled');
+  
+    if (tabSelecetedCards.length > 0) {
+      tabSelecetedCards.forEach(function (recette) {
+        cards.each(function () {
+          let card = $(this);
+          if (recette.recipeName === $('.titre', card).text()) {
+            card.addClass('scheduled');
+          }
+        });
+      });
+    }
+  }
+
