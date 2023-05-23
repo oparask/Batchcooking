@@ -6,9 +6,14 @@ fetch("https://git.esi-bru.be/api/v4/projects/40922/repository/files/recipes-it3
     .catch(alert);
 
 /**
- * Displays the recovered recipes data;
- * 
- * @param {RecipesAndRelatedData} data ...
+ * Displays the retrieved recipes data.
+ *
+ * The function populates the HTML template with the recipe data
+ * and adds event handlers for displaying recipe info and selecting cards for the planning.
+ * It also attaches a click event handler to the shopping list button to trigger the display of the shopping list.
+ *
+ * @param {RecipesAndRelatedData} data - The data object containing recipes and related information.
+ * @returns {void}
  */
 function loadCards(data) {
     console.table(data);
@@ -54,57 +59,62 @@ function loadCards(data) {
 
         tab.length = 0;
 
-        //pour recette
+        // Boutton qui donne les info de la recette
         infoButton(card, recette, data.units, data);
 
-        // Reste du code pour créer la carte...
-
+        // Sélectionner une carte
         card.find(".calendrier").on("click", function () {
-            // Sélectionner une carte
             // @ts-ignore
             selectedCard(recette, this);
         })
 
-        //clone de la carte à la fin
+        // Clone de la carte à la fin et ajout dans l'html
         $("#cards").append(card);
-
     }
 
+    // Lorsqu'on clique sur le boutton shopping list, toutes les cartes sont deja clonnées
     $(".shoppingList").on("click", getShowShoppingListAction(data));
 }
 
 
 /**
- * Adds the cards for each of the recipes.
- * 
- * @param {JQuery<HTMLDivElement>} card
- * @param {Recipe} recette
- * @param {Object<string, string>} units ...
- * @param {RecipesAndRelatedData} data ...
+ * Enables access to the recipe by clicking on the info button in the card.
+ *
+ * The function attaches a click event handler to the info button of the card.
+ * When clicked, it triggers the showRecipeAction() function to display the recipe's HTML page
+ * and calls the fillRecipe() function to populate the steps and ingredients of the recipe.
+ *
+ * @param {JQuery<HTMLDivElement>} card - The card element containing the info button.
+ * @param {Recipe} recette - The recipe associated with the card.
+ * @param {Object<string, string>} units - The units data for displaying ingredient quantities.
+ * @param {RecipesAndRelatedData} data - The data object containing ingredients information.
+ * @returns {void}
  */
 function infoButton(card, recette, units, data) {
     $(".icônes .recette", card).on("click", () => {
-        //titre
-        $("#recipe-container h1").text(recette.recipeName);
-        const img = $("#recipe-image");
-        //image
-        img.attr("src", recette.imageLink);
-        img.attr("alt", recette.recipeName);
-        img.attr("title", recette.recipeName);
-        showRecipeAction();
-        fillRecipe(recette, units, data);
+        showRecipeAction(); // pour afficher la page html de la recette
+        fillRecipe(recette, units, data); // remplir les étapes ainsi que les ingrédients de la recette 
     });
 }
 
 /**
- * Allows you to modify the container "reciper-container"
- * to display the recipe passed in parameter.
- * 
- * @param {RecipesAndRelatedData} data ...
- * @param {Recipe} recette ...
- * @param {Object<string, string>} units ...
+ * Modifies the "recipe-container" container to display the provided recipe.
+ *
+ * The function updates the title, image, ingredients, and steps of the recipe in the designated HTML elements.
+ *
+ * @param {Recipe} recette - The recipe to be displayed.
+ * @param {Object<string, string>} units - The units data for displaying ingredient quantities.
+ * @param {RecipesAndRelatedData} data - The data object containing ingredients information.
+ * @returns {void}
  */
 function fillRecipe(recette, units, data) {
+    //titre
+    $("#recipe-container h1").text(recette.recipeName);
+    const img = $("#recipe-image");
+    //image
+    img.attr("src", recette.imageLink);
+    img.attr("alt", recette.recipeName);
+    img.attr("title", recette.recipeName);
     $("#recipe-ingredients ul").empty();
     $("#recipe-steps ol").empty();
     for (const ingrédient of recette.ingredients) {
@@ -142,12 +152,21 @@ let selectedCardData;
  */
 const tabSelecetedCards = new Array();
 
+
 /**
- * Adds the cards in the planning
- * 
- * @param {Recipe} recette
- * @param {any} button
- * 
+ * Handles the selection of a card and triggers actions based on the selected recipe.
+ *
+ * If the card associated with the button is already selected,
+ * it removes the 'selected' class from the card element and sets the selectedCardData to undefined.
+ * If the card associated with the button is not selected,
+ * it removes the 'selected' class from all cards,
+ * adds the 'selected' class to the card associated with the button, and sets the selectedCardData to the selected recipe.
+ *
+ * Finally, it calls the addOrRmoveCardPlanning() function to add or remove the selected card from the planning.
+ *
+ * @param {Recipe} recette - The selected recipe.
+ * @param {any} button - The button associated with the selected card.
+ * @returns {void}
  */
 function selectedCard(recette, button) {
     console.log(recette);
@@ -169,9 +188,19 @@ function selectedCard(recette, button) {
 }
 
 /**
- * 
- * @param {Recipe} recette 
- * @param {any} button
+ * Adds or removes a card from the planning based on the selected recipe.
+ *
+ * If a card is selected, it performs operations with the selected card.
+ * It appends the selected card's recipe name to the clicked day in the planning,
+ * adds the 'scheduled' class to the selected card,
+ * and adds the recipe to the 'tabSelecetedCards' array.
+ *
+ * If no card is selected and a recipe in the planning is clicked,
+ * it removes the recipe from the planning by calling the 'removeCardPlanning' function.
+ *
+ * @param {Recipe} recette - The selected recipe to be added.
+ * @param {any} button - The button associated with the selected card.
+ * @returns {void}
  */
 function addOrRmoveCardPlanning(recette, button) {
     // Supprimer les gestionnaires d'événements click précédents
@@ -204,15 +233,19 @@ function addOrRmoveCardPlanning(recette, button) {
 
         });
     } else {
-
         //supprimer l'element ajouté dans planning lorsque aucune carte est selectionnée
         removeCardPlanning();
-
     }
-
-
 }
 
+/**
+ * Removes click event handlers from previous elements, adds click event listeners to the paragraphs of planning days,
+ * removes the clicked paragraph from the planning which corresponds tp the recipe name,
+ * and removes the corresponding recipe from the 'tabSelecetedCards' array.
+ * Also updates the class 'scheduled' for cards based on the updated 'tabSelecetedCards' array.
+ *
+ * @returns {void}
+ */
 function removeCardPlanning() {
     // Supprimer les gestionnaires d'événements click précédents
     $('.jour p').off('click');
@@ -240,14 +273,19 @@ function removeCardPlanning() {
             console.log(tabSelecetedCards);
             //Enlever la classe scheduled des cartes qui se toruvent pas dans le planning
             checkClassScheduledCards();
-
-
         });
 
     });
 }
 
-
+/**
+ * Updates the class 'scheduled' for cards based on the selected recipes in the 'tabSelecetedCards' array.
+ *
+ * The function removes the 'scheduled' class from all cards,
+ * and then adds the 'scheduled' class to the cards that match the recipe names in the 'tabSelecetedCards' array.
+ *
+ * @returns {void}
+ */
 function checkClassScheduledCards() {
     let cards = $('.card');
     cards.removeClass('scheduled');
@@ -264,11 +302,14 @@ function checkClassScheduledCards() {
     }
 }
 
-
-
 /**
- * Remplit la liste de courses en fonction des recettes sélectionnées.
- * @param {RecipesAndRelatedData} data - Les données des recettes et des catégories.
+ * Fills the shopping list based on the selected recipes.
+ *
+ * The function iterates through the selected recipes and their ingredients,
+ * retrieves the corresponding category and translated ingredient data from the provided 'data' object, and populates the shopping list accordingly.
+ *
+ * @param {RecipesAndRelatedData} data - The data object containing recipes and categories information.
+ * @returns {void}
  */
 function fillShoppingList(data) {
 
@@ -316,10 +357,13 @@ function fillShoppingList(data) {
 }
 
 /**
- * Récupère l'action d'affichage de la liste de courses avec les données.
-* @param {RecipesAndRelatedData} data - Les données des recettes et des catégories.
-* @returns - L'action d'affichage de la liste de courses.
-**/
+ * Returns the action for displaying the shopping list with the provided data.
+ *
+ * The function returns a callback function that calls the 'showShoppingListAction()' function with the given 'data'.
+ *
+ * @param {RecipesAndRelatedData} data - The data object containing recipes and categories information.
+ * @returns {Function} - The action for displaying the shopping list.
+ */
 function getShowShoppingListAction(data) {
     return function () {
         showShoppingListAction(data);
