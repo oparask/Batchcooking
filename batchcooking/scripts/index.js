@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use strict";
 
 fetch("https://git.esi-bru.be/api/v4/projects/40922/repository/files/recipes.json/raw")
@@ -30,31 +31,35 @@ function loadCards(data) {
         //ajouter les apports;
         for (const tag of recette.supplies) {
             switch (tag) {
-            case "proteins":
-                $(".tags", card).append(
-                    $("<span>")
-                        .addClass("protéines")
-                        .text("Protéines")
-                );
-                break;
-            case "starches":
-                $(".tags", card).append(
-                    $("<span>")
-                        .addClass("féculents")
-                        .text("Féculents")
-                );
-                break;
-            case "vegetables":
-                $(".tags", card).append(
-                    $("<span>")
-                        .addClass("légumes")
-                        .text("Légumes")
-                );
-                break;
+                case "proteins":
+                    $(".tags", card).append(
+                        $("<span>")
+                            .addClass("protéines")
+                            .text("Protéines")
+                    );
+                    break;
+                case "starches":
+                    $(".tags", card).append(
+                        $("<span>")
+                            .addClass("féculents")
+                            .text("Féculents")
+                    );
+                    break;
+                case "vegetables":
+                    $(".tags", card).append(
+                        $("<span>")
+                            .addClass("légumes")
+                            .text("Légumes")
+                    );
+                    break;
             }
         }
         //pour recette
         infoButton(card, recette, data.units);
+        $("#numberPeople").on("change", () => {
+            let nbPeople = $("#numberPeople").val();
+            fillRecipe(recette, data.units, nbPeople);
+          });
         $("#cards").append(card);
     }
 }
@@ -66,19 +71,12 @@ function loadCards(data) {
  * @param {Recipe} recette
  * @param {Object<string, string>} units ...
  */
-function infoButton(card, recette, units) {
+ function infoButton(card, recette, units) {
     $(".icônes .recette", card).on("click", () => {
-        //titre
-        $("#recipe-container h1").text(recette.recipeName);
-        const img = $("#recipe-image");
-        //image
-        img.attr("src", recette.imageLink);
-        img.attr("alt", recette.recipeName);
-        img.attr("title", recette.recipeName);
-        showRecipeAction();
-        fillRecipe(recette, units);
+      showRecipeAction();
+      fillRecipe(recette, units, 4);
     });
-}
+  }
 
 /**
  * Allows you to modify the container "reciper-container"
@@ -86,25 +84,27 @@ function infoButton(card, recette, units) {
  * 
  * @param {Recipe} recette ...
  * @param {Object<string, string>} units ...
+ * @param {any} nbPeople
  */
-function fillRecipe(recette, units) {
-
+function fillRecipe(recette, units, nbPeople) {
+    //titre
+    $("#recipe-container h1").text(recette.recipeName);
+    const img = $("#recipe-image");
+    //image
+    img.attr("src", recette.imageLink);
+    img.attr("alt", recette.recipeName);
+    img.attr("title", recette.recipeName);
     $("#recipe-ingredients ul").empty();
     $("#recipe-steps ol").empty();
     for (const ingrédient of recette.ingredients) {
         const nom = ingrédient.ingredientName;
-
         if ("quantity" in ingrédient) {
-            // @ts-ignore
-            const quantité = (ingrédient.quantity/(recette.qp)*4).toFixed(2); 
+            const quantité = (+ingrédient.quantity / (+recette.qp) * (+nbPeople)).toFixed(2);
             const unité = units[ingrédient.unit];
             $("#recipe-ingredients ul").append(
                 $("<li>")
                     .text(`${quantité} ${unité} ${nom}`)
             );
-
-
-
         } else {
             $("#recipe-ingredients ul").append(
                 $("<li>")
@@ -112,9 +112,6 @@ function fillRecipe(recette, units) {
             );
         }
     }
-
-
-
     for (const étape of recette.steps) {
         $("#recipe-steps ol").append(
             $("<li>")
@@ -122,3 +119,6 @@ function fillRecipe(recette, units) {
         );
     }
 }
+
+
+

@@ -7,11 +7,11 @@
 
 #recipe-container-background{
     display: grid;
-    grid-template-columns: 0.7fr 1.5fr 7fr;
+    grid-template-columns: 0.7fr 1.5fr 7fr 1fr;
     grid-template-rows: auto 0.5fr 1fr;
-    grid-template-areas: "retour titre ."
-        "retour image ingrédients"
-        "retour étapes étapes";
+    grid-template-areas: "retour titre titre titre"
+        "retour image ingrédients numberPeople"
+        "retour étapes étapes étapes";
     grid-gap: 4px;
 }
 
@@ -54,4 +54,10 @@
     font-size: 1.5em;
     color: rgb(0, 0, 0);
     text-shadow: 1px 0px rgba(194, 189, 170, 0.877);
+}
+
+#numberPeople{
+    grid-area: numberPeople;
+    max-width: 40px;
+    max-height: 40px;
 }
