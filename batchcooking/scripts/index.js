@@ -88,17 +88,23 @@ function infoButton(card, recette, units) {
  * @param {Object<string, string>} units ...
  */
 function fillRecipe(recette, units) {
+
     $("#recipe-ingredients ul").empty();
     $("#recipe-steps ol").empty();
     for (const ingrédient of recette.ingredients) {
         const nom = ingrédient.ingredientName;
+
         if ("quantity" in ingrédient) {
-            const quantité = ingrédient.quantity;
+            // @ts-ignore
+            const quantité = (ingrédient.quantity/(recette.qp)*4).toFixed(2); 
             const unité = units[ingrédient.unit];
             $("#recipe-ingredients ul").append(
                 $("<li>")
                     .text(`${quantité} ${unité} ${nom}`)
             );
+
+
+
         } else {
             $("#recipe-ingredients ul").append(
                 $("<li>")
@@ -106,6 +112,9 @@ function fillRecipe(recette, units) {
             );
         }
     }
+
+
+
     for (const étape of recette.steps) {
         $("#recipe-steps ol").append(
             $("<li>")
